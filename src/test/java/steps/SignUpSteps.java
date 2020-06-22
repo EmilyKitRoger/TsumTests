@@ -3,7 +3,6 @@ import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -44,18 +43,8 @@ public class SignUpSteps extends PageObject {
     }
 
     @Step
-    public void resultRegistrationFailed() {
-        assertThat(error.getText(), containsString("Пароль должен быть не менее 8 символов длиной"));
-    }
-
-    @Step
     public void errorCheck() {
         error.isDisplayed();
-    }
-
-    @Step
-    public void resultRegistrationChecked() {
-        assertThat(registrMsg.getText(), containsString("Успешная регистрация"));
     }
 
     @Step
@@ -63,5 +52,14 @@ public class SignUpSteps extends PageObject {
         registrMsg.isDisplayed();
     }
 
+    // To-do: correct the encoding
+    @Step
+    public void resultRegistrationFailed() {
+        assertThat(error.getText(), containsString("Пароль должен быть не менее 8 символов длиной"));
+    }
 
+    @Step
+    public void resultRegistrationChecked() {
+        assertThat(registrMsg.getText(), containsString("Успешная регистрация"));
+    }
 }

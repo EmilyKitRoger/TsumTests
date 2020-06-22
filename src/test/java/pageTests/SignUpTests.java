@@ -20,20 +20,21 @@ public class SignUpTests {
     public void whenWrongPasswordThenRegistrationFailed() {
         steps.open();
         steps.setLoginValue("signUpTsumAutoTest-1@gmail.com");
-        steps.setPasswordValue("passw");
+        steps.setPasswordValue("passw"); // Using short password, it is reliably incorrect
         steps.signUp();
-        //steps.resultRegistrationFailed();
+        // steps.resultRegistrationFailed(); // Disabled cause of incorrect encoding
         steps.errorCheck();
     }
 
     @Test
     public void whenCorrectEmailAndPasswordThenRegistrationChecked() {
         int num = random.nextInt(10000);
+
         steps.open();
-        steps.setLoginValue("signUpTsumAutoTest" + num + "@mail.ru");
+        steps.setLoginValue("signUpTsumAutoTest" + num + "@mail.ru"); // Using random login
         steps.setPasswordValue("password");
         steps.signUp();
-        //steps.resultRegistrationChecked();
+        // steps.resultRegistrationChecked(); // Disabled cause of incorrect encoding
         steps.msgCheck();
     }
 }

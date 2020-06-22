@@ -19,17 +19,17 @@ public class SignInTests {
     @Test
     public void whenWrongEmailAndPasswordThenLoginFailed() {
         steps.open();
-        steps.setLoginValue("login");
+        steps.setLoginValue("fakeLogin");
         steps.setPasswordValue("password");
         steps.signIn();
-        //steps.resultLoginFailed();
+        // steps.resultLoginFailed(); // Disabled cause of incorrect encoding
         steps.errorCheck();
     }
 
     @Test
     public void whenCorrectEmailAndPasswordThenLoginChecked() {
         steps.open();
-        steps.setLoginValue("signInTsumAutoTest-1111@gmail.com");
+        steps.setLoginValue("signInTsumAutoTest-1111@gmail.com"); // Use existing login and password, to-do: move to config
         steps.setPasswordValue("password");
         steps.signIn();
         steps.resultLoginChecked();

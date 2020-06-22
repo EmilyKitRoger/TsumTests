@@ -47,11 +47,6 @@ public class SignInSteps extends PageObject {
     }
 
     @Step
-    public void resultLoginFailed() {
-        assertThat(error.getText(), containsString("Указан некорректный email"));
-    }
-
-    @Step
     public void errorCheck() {
         error.isDisplayed();
     }
@@ -59,5 +54,12 @@ public class SignInSteps extends PageObject {
 
     @Step
     public void resultLoginChecked() {
-        assertThat(user.getText(), containsString("signInTsumAutoTest-1111@gmail.com")); }
+        assertThat(user.getText(), containsString("signInTsumAutoTest-1111@gmail.com"));
+    }
+
+    // To-do: correct the encoding
+    @Step
+    public void resultLoginFailed() {
+        assertThat(error.getText(), containsString("Указан некорректный email"));
+    }
 }
